@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel dist/index.html",
-    "build": "parcel build ./src/index.html  --public-url ."
+    "parcel:dev": "parcel ./frontend/index.html",
+    "build": "parcel build ./frontend/index.html --out-dir ./views/ --public-url .",
+    "start:dev": "npm run build && node .",
+    "start": "node index.js"
   },
   "keywords": [
     "afvalkalender"
@@ -15,5 +17,8 @@
   "devDependencies": {
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-inliner": "^1.0.2"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
