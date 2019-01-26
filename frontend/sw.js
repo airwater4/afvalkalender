@@ -1,4 +1,4 @@
-var CACHE_NAME = 'afvalkalender-cache-v2';
+var CACHE_NAME = 'afvalkalender-cache-v6';
 var urlsToCache = [
   '/',
   '/index.html'

@@ -6,7 +6,11 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.static('views'))
 
-app.get('*', 
+app.get('/manifest.json', (_, res) => 
+    res.sendFile(path.join(__dirname, '/views/manifest.json'))
+)
+
+app.get('/', 
     (_, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
 
 console.info(`Server is listening on port ${PORT}`);
