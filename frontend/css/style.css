@@ -41,8 +41,6 @@ header {
     background-color: #f8d2b8;
   }
   /* special days */
-  .today { border: 2px dashed rgb(1, 2, 80);}
-
   .pmd { background-color: orange; }
 
   .gft { background-color: lightgreen; }
@@ -66,4 +64,12 @@ header {
   }
   .legend-item {
     border: 1px solid #ddd;
+  }
+
+
+  @keyframes ants { to { background-position: 100% } }
+  .today {
+    border: 1px solid transparent;
+    background: linear-gradient(white, white) padding-box, repeating-linear-gradient(-45deg, black 0, black 25%, white 0, white 50%) 0 / .6em .6em;
+    animation: ants 5s linear infinite;
   }
