@@ -1,11 +1,11 @@
 {
   "name": "afvalkalender",
-  "version": "1.0.0",
+  "version": "20.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "parcel:dev": "parcel ./frontend/index.html",
-    "build": "parcel build ./frontend/index.html --out-dir ./views/ --public-url .",
+    "parcel:dev": "parcel frontend/index.html",
+    "build": "parcel build frontend/index.html --out-dir ./views/ --public-url .",
     "start:dev": "npm run build && node .",
     "start": "node index.js"
   },
