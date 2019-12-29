@@ -41,6 +41,8 @@ header {
     background-color: #f8d2b8;
   }
   /* special days */
+  .today { border: 2px dashed rgb(1, 2, 80);}
+
   .pmd { background-color: orange; }
 
   .gft { background-color: lightgreen; }
