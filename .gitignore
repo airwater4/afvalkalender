@@ -2,3 +2,6 @@ node_modules/
 views/
 .cache/
 dist/
+frontend/ico/
+view_/
+dis_/

@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.static('views'))
 
-app.get('/manifest.json', (_, res) => 
-    res.sendFile(path.join(__dirname, '/views/manifest.json'))
+app.get('/manifest.webmanifest', (_, res) => 
+    res.sendFile(path.join(__dirname, '/views/manifest.webmanifest'))
 )
 
 app.get('/', 
