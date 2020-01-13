@@ -8,7 +8,8 @@
     "build": "parcel build frontend/index.html --out-dir ./views/ --public-url .",
     "build:icons": "pwa-asset-generator frontend/ico/icon-512x512.png frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest",
     "start:dev": "npm run build && node .",
-    "start": "node index.js"
+    "start": "node index.js",
+    "gcloud:deploy": "gcloud app deploy"
   },
   "keywords": [
     "afvalkalender"
