@@ -1,6 +1,7 @@
 const today = new Date();
 const month = today.getMonth() + 1;
-const monthCell = document.querySelector(`[data-month="${month}"]`);
+const monthString = month.toFixed(0).padStart(2, 0);
+const monthCell = document.querySelector(`[data-month="${monthString}"]`);
 
 if (monthCell) {
   for (let cell of monthCell.children) {
