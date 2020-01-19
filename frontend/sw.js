@@ -1,4 +1,4 @@
-var CACHE_NAME = "afvalkalender-cache-v10";
+var CACHE_NAME = "afvalkalender-cache-v11";
 var urlsToCache = ["/", "/index.html"];
 
 self.addEventListener("install", event => {

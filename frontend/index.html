@@ -866,10 +866,52 @@
         <span class="legend-item kerstbomen"></span>
         <span>Kerstbomen</span>
       </section>
+      <div id="install-popup" class="hidden">
+        <p>
+          Toegang tot afvalkalender zelfs wanneer offline
+        </p>
+        <div class="popup-buttons">
+          <button id="skip-install">
+            Niet nu
+          </button>
+          <button id="install">
+            Installeren
+          </button>
+        </div>
+      </div>
     </main>
+
     <footer></footer>
     <script>
       if ("serviceWorker" in navigator) {
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", event => {
+          deferredPrompt = event;
+          setTimeout(() => {
+            showInstallPromotion();
+          }, 30000);
+        });
+
+        function showInstallPromotion() {
+          const installPopup = document.querySelector("#install-popup");
+          const installButton = document.querySelector("#install");
+          const skipInstallButton = document.querySelector("#skip-install");
+
+          skipInstallButton.addEventListener("click", () =>
+            installPopup.classList.add("hidden")
+          );
+          installButton.addEventListener("click", e => {
+            installPopup.classList.add("hidden");
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(choiceResult => {
+              deferredPrompt = null;
+            });
+          });
+
+          installPopup.classList.remove("hidden");
+        }
+
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/sw.js").then(
             registration => {

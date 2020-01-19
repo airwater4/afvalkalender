@@ -86,3 +86,52 @@ header h1 {
       0.6em 0.6em;
   animation: ants 5s linear infinite;
 }
+
+/* install popup */
+#install-popup.hidden {
+  display: none;
+}
+
+@keyframes install-popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#install-popup {
+  padding: 1em;
+  background: lightblue;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: sticky;
+  bottom: 0;
+  animation: install-popup 1s linear;
+}
+
+#install-popup p {
+  flex-grow: 1;
+  text-align: center;
+}
+
+@media (max-width: 580px) {
+  #install-popup p {
+    flex-basis: 100%;
+    text-align: left;
+  }
+}
+
+#install-popup button {
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+#skip-install {
+  margin-right: 1em;
+}
