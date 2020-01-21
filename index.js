@@ -1,18 +1,12 @@
-const express = require('express');
-const path = require('path');
+const static = require('node-static');
+const http = require('http')
 
-const app = express();
 const PORT = process.env.PORT || 3000
 
-app.use(express.static('views'))
+const file = new static.Server('./views');
 
-app.get('/manifest.webmanifest', (_, res) => 
-    res.sendFile(path.join(__dirname, '/views/manifest.webmanifest'))
-)
-
-app.get('/', 
-    (_, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
-
-console.info(`Server is listening on port ${PORT}`);
-
-app.listen(PORT);
+http.createServer(function (request, response) {
+    request.addListener('end', function () {
+        file.serve(request, response);
+    }).resume();    
+}).listen(PORT, () => console.info(`Server is listening on port ${PORT}`));
