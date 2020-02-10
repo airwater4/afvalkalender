@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "parcel:dev": "parcel frontend/index.html",
-    "build": "parcel build frontend/index.html --out-dir ./views/ --public-url .",
-    "build:icons": "pwa-asset-generator frontend/ico/icon-512x512.png frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest",
-    "start:dev": "npm run build && node .",
-    "start": "node index.js",
+    "build:icons": "pwa-asset-generator frontend/ico/logo.svg frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest && prettier frontend/index.html --write",
     "gcloud:deploy": "gcloud app deploy"
   },
   "keywords": [
@@ -17,12 +13,17 @@
   "author": "airwater4",
   "license": "ISC",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
-    "parcel-plugin-inliner": "^1.0.10",
-    "parcel-plugin-prettier": "^0.2.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-inline-source": "^4.0.0",
+    "gulp-terser": "^1.2.0",
+    "prettier": "^1.19.1",
     "pwa-asset-generator": "^2.1.3"
   },
   "dependencies": {
+    "gulp-htmlmin": "^5.0.1",
     "node-static": "^0.7.11"
   }
 }

@@ -10,6 +10,11 @@
     <link type="text/css" rel="stylesheet" href="./css/style.css" />
     <link rel="manifest" href="manifest.webmanifest" />
 
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Afvalkalender 2020 - Amstelveen, wijk 8"
+    />
+
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -32,10 +37,6 @@
     />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-title"
-      content="Afvalkalender 2020 - Amstelveen, wijk 8"
-    />
 
     <link
       rel="apple-touch-startup-image"
@@ -882,51 +883,7 @@
     </main>
 
     <footer></footer>
-    <script>
-      if ("serviceWorker" in navigator) {
-        let deferredPrompt;
-
-        window.addEventListener("beforeinstallprompt", event => {
-          deferredPrompt = event;
-          setTimeout(() => {
-            showInstallPromotion();
-          }, 30000);
-        });
-
-        function showInstallPromotion() {
-          const installPopup = document.querySelector("#install-popup");
-          const installButton = document.querySelector("#install");
-          const skipInstallButton = document.querySelector("#skip-install");
-
-          skipInstallButton.addEventListener("click", () =>
-            installPopup.classList.add("hidden")
-          );
-          installButton.addEventListener("click", e => {
-            installPopup.classList.add("hidden");
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(choiceResult => {
-              deferredPrompt = null;
-            });
-          });
-
-          installPopup.classList.remove("hidden");
-        }
-
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").then(
-            registration => {
-              console.info(
-                "ServiceWorker registration successful with scope: ",
-                registration.scope
-              );
-            },
-            err => {
-              console.warn("ServiceWorker registration failed: ", err);
-            }
-          );
-        });
-      }
-    </script>
+    <script src="./js/sw-install.js" inline></script>
     <script async src="./js/main.js"></script>
   </body>
 </html>
