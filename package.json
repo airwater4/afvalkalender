@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "gulp default",
     "build:icons": "pwa-asset-generator frontend/ico/logo.svg frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest && prettier frontend/index.html --write",
     "gcloud:deploy": "gcloud app deploy"
   },
@@ -13,11 +14,15 @@
   "author": "airwater4",
   "license": "ISC",
   "devDependencies": {
+    "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.2.0",
     "gulp-cli": "^2.2.0",
     "gulp-inline-source": "^4.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-rev": "^9.0.0",
     "gulp-terser": "^1.2.0",
     "prettier": "^1.19.1",
     "pwa-asset-generator": "^2.1.3"
