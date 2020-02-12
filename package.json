@@ -6,9 +6,11 @@
   "scripts": {
     "build": "gulp default",
     "watch": "gulp watch",
-    "local:srv": "cross-env NODE_ENV=development node index.js",
+    "local:srv": "cross-env NODE_ENV=development OPEN_BROWSER=true node index.js",
     "build:icons": "pwa-asset-generator frontend/ico/logo.svg frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest && prettier frontend/index.html --write",
-    "gcloud:deploy": "gcloud app deploy"
+    "gcloud:deploy": "gcloud app deploy",
+    "test:local": "cross-env NODE_ENV=development jest",
+    "test": "cross-env NODE_ENV=production jest"
   },
   "keywords": [
     "afvalkalender"

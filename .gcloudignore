@@ -21,8 +21,13 @@ node_modules/
 frontend/
 dist/
 
+# Tests
+test/
+
 # Configuration
 .vscode/
 plan.txt
 gulpfile.js
 prettier.config.js
+jest.config.js
+jest-puppeteer.config.js
