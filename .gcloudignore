@@ -20,4 +20,9 @@ node_modules/
 .cache/
 frontend/
 dist/
+
+# Configuration
+.vscode/
 plan.txt
+gulpfile.js
+prettier.config.js

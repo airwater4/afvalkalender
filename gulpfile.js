@@ -1,4 +1,4 @@
-const { src, dest, series } = require('gulp')
+const { src, dest, series, watch } = require('gulp')
 const terser = require('gulp-terser')
 const cleanCSS = require('gulp-clean-css')
 const autoprefixer = require('gulp-autoprefixer')
@@ -92,5 +92,12 @@ const build = series(
 )
 
 module.exports = {
-  default: build
+  default: build,
+  watch: function() {
+    watch(`${SRC_JS_FOLDER}/*.js`, minifyJS)
+    watch(`${SRC_CSS_FOLDER}/*.css`, minifyCSS)
+    watch(`${SRC_FOLDER}/sw.js`, processServiceWorker)
+    watch(`${SRC_ICO_FOLDER}/*.png`, copyIcons)
+    watch(`${SRC_FOLDER}/*.html`, copyHtml)
+  }
 }

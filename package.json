@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp default",
+    "watch": "gulp watch",
+    "local:srv": "cross-env NODE_ENV=development node index.js",
     "build:icons": "pwa-asset-generator frontend/ico/logo.svg frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest && prettier frontend/index.html --write",
     "gcloud:deploy": "gcloud app deploy"
   },
@@ -14,6 +16,7 @@
   "author": "airwater4",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.0",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
@@ -24,6 +27,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-rev": "^9.0.0",
     "gulp-terser": "^1.2.0",
+    "open": "^7.0.2",
     "prettier": "^1.19.1",
     "pwa-asset-generator": "^2.1.3"
   },
