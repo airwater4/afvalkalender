@@ -38,6 +38,10 @@ function copyIcons() {
   return src(`${SRC_ICO_FOLDER}/*.png`).pipe(dest(DEST_ICO_FOLDER))
 }
 
+function copyWebmanifest() {
+  return src(`${SRC_FOLDER}/*.webmanifest`).pipe(dest(DEST_FOLDER))
+}
+
 function minifyJS() {
   return src(`${SRC_JS_FOLDER}/*.js`)
     .pipe(terser())
@@ -62,7 +66,7 @@ function bumpServiceWorkerCacheVersion(stream) {
   return stream
     .pipe(appendFileContentHash())
     .pipe(
-      rename(function(path) {
+      rename(function (path) {
         const [basename, contentHash] = path.basename.split('-')
         if (contentHash) {
           path.basename = contentHash
@@ -70,7 +74,7 @@ function bumpServiceWorkerCacheVersion(stream) {
       })
     )
     .pipe(
-      replace(/afvalkalender-cache-hash/, function() {
+      replace(/afvalkalender-cache-hash/, function () {
         const contentHash = this.file.stem
         const cacheVersion = `afvalkalender-cache-${contentHash}`
 
@@ -87,16 +91,18 @@ const build = series(
   minifyJS,
   minifyCSS,
   processServiceWorker,
+  copyWebmanifest,
   copyIcons,
   copyHtml
 )
 
 module.exports = {
   default: build,
-  watch: function() {
+  watch: function () {
     watch(`${SRC_JS_FOLDER}/*.js`, minifyJS)
     watch(`${SRC_CSS_FOLDER}/*.css`, minifyCSS)
     watch(`${SRC_FOLDER}/sw.js`, processServiceWorker)
+    watch(`${SRC_FOLDER}/*.webmanifest`, copyWebmanifest)
     watch(`${SRC_ICO_FOLDER}/*.png`, copyIcons)
     watch(`${SRC_FOLDER}/*.html`, copyHtml)
   }
