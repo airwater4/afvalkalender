@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "build": "gulp default",
     "watch": "gulp watch",
     "local:srv": "cross-env NODE_ENV=development node index.js",
