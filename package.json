@@ -7,9 +7,11 @@
     "start": "node index.js",
     "build": "gulp default",
     "watch": "gulp watch",
-    "local:srv": "cross-env NODE_ENV=development node index.js",
+    "local:srv": "cross-env NODE_ENV=development OPEN_BROWSER=true node index.js",
     "build:icons": "pwa-asset-generator frontend/ico/logo.svg frontend/ico --background '#ed1c24' --scrape false --index frontend/index.html --manifest frontend/manifest.webmanifest && prettier frontend/index.html --write",
-    "gcloud:deploy": "gcloud app deploy"
+    "gcloud:deploy": "gcloud app deploy && npm run test:prod",
+    "test:local": "cross-env NODE_ENV=development jest",
+    "test:prod": "cross-env NODE_ENV=production jest"
   },
   "keywords": [
     "afvalkalender"
@@ -29,8 +31,11 @@
     "gulp-replace": "^1.0.0",
     "gulp-rev": "^9.0.0",
     "gulp-terser": "^1.2.0",
+    "jest": "^25.1.0",
+    "jest-puppeteer": "^4.4.0",
     "open": "^7.0.2",
     "prettier": "^1.19.1",
+    "puppeteer": "^2.1.1",
     "pwa-asset-generator": "^2.1.3"
   },
   "dependencies": {

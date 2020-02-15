@@ -3,13 +3,14 @@ const http = require('http')
 
 const PORT = process.env.PORT || 3000
 const isDev = process.env.NODE_ENV === 'development'
-const file = new static.Server('./views')
+const openBrowser = process.env.OPEN_BROWSER === 'true'
+const folder = new static.Server('./views')
 
 http
   .createServer(function(request, response) {
     request
       .addListener('end', function() {
-        file.serve(request, response)
+        folder.serve(request, response)
       })
       .resume()
   })
@@ -18,6 +19,8 @@ http
     if (isDev) {
       const localUrl = `http://localhost:${PORT}`
       console.info(localUrl)
-      require('open')(localUrl)
+      if (openBrowser) {
+        require('open')(localUrl)
+      }
     }
   })
